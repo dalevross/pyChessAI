@@ -95,13 +95,12 @@ class Game:
         :return: None
         """
         theme = pygame_menu.themes.Theme(title_bar_style=pygame_menu.widgets.MENUBAR_STYLE_NONE,
-                                         menubar_close_button=False,
                                          widget_font_color=SMALL_TEXT_COLOR,
                                          background_color=BG_COLOR,
                                          widget_font=pygame_menu.font.FONT_OPEN_SANS_BOLD,
                                          cursor_color=WHITE)
 
-        menu = pygame_menu.Menu(height=SCREEN_HEIGHT, width=SCREEN_WIDTH, title="", theme=theme, menu_position=(50, 0))
+        menu = pygame_menu.Menu(height=SCREEN_HEIGHT, width=SCREEN_WIDTH, title=" ", theme=theme, menu_position=(50, 0))
         menu.add_label("ChessAI", align=pygame_menu.locals.ALIGN_CENTER, font_name=pygame_menu.font.FONT_OPEN_SANS_BOLD,
                        font_color=LARGE_TEXT_COLOR, font_size=90, margin=(0, 50))
         menu.add_text_input('Name : ', default=self.p1_name, maxchar=10, onchange=self.set_name)
@@ -109,7 +108,7 @@ class Game:
         menu.add_selector('AI : ', [('Minimax', 1), ('Random', 2)], onchange=self.set_ai)
         menu.add_button('Play', self.game_screen)
         menu.add_button('Quit', pygame_menu.events.EXIT)
-        menu.add_label("", align=pygame_menu.locals.ALIGN_CENTER, font_color=BLACK, font_size=70, margin=(0, 50))
+        menu.add_label(" ", align=pygame_menu.locals.ALIGN_CENTER, font_color=BLACK, font_size=70, margin=(0, 50))
         menu.center_content()
 
         # Keeps track of whether menu screen should keep running or stop
@@ -155,7 +154,7 @@ class Game:
         # Create a thread which will be used to determine AI's move concurrently with rest of game
         t = threading.Thread(target=self.determine_move)
 
-        # Keeps track of whether or not human player has resigned
+        # Keeps track of whether  human player has resigned
         p1_resigned = False
 
         # Creates collision box for resign button
